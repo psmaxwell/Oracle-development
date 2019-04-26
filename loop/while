@@ -1,0 +1,44 @@
+使用loop/while 语句求前100个自然数的和
+
+实例108 使用loop /while 语句求前100 个自然数的和
+
+loop 语句会先执行一次循环体，然后再判断"exit when" 关键字后面的条件表达式的值是 true 还是 false , 如果是true,则程序会退出循环体，否则程序将再次执行循环体，这样就使得
+ 程序至少能够执行一次循环体，它的语法格式如下：
+ 
+ loop 
+   plsql_sentence;
+ exit when end_condition_exp
+ end loop;
+ 
+ plsql_sentence : 循环体中的PL/SQL语句，可能是一条，也可能是多条，这是循环体的核心部分，这些PL/SQL 语句至少被执行一遍。
+ 
+ end_condition_exp : 循环结束条件表达式，当该表达式的值为true时，则程序会推出循环体，否则程序将再次执行循环体。
+ 
+ while 语句 根据它的条件表达式的值执行零次或多次循环体，在每次执行循环体之前，首先要判断条件表达式的值是否为true,若为true,则程序执行循环体；
+   否则推出while循环，然后继续执行while语句后面的其他代码，其语法格式如下：
+   while condition_expression loop 
+     plsql_sentence;
+     end loop;
+     
+ condition_expression: 表达一个条件表达式，但其值为true时，程序执行为true时，程序执行循环体，否则程序退出循环体，程序每次在执行循环体之前，
+ 都要首先判断该表达式的值是否为true. 
+ 
+ plsql_sentence : 循环体内的 PL/SQL 语句。
+ 
+ /*使用loop循环求前100 个自然数 的和*/
+  
+ set serveroutput on
+ 
+ declare
+   sum_i int:= 0;
+   i int:= 0;
+ begin
+   loop
+     i:=i+1;
+     sum_i:=sum_i+i;
+     exit when i = 100;
+   end loop;
+   dbms_output.put_line('前100个自然数的和是: ' || sum_i);
+ end;
+ /
+ 
