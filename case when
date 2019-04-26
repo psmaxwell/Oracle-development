@@ -1,0 +1,23 @@
+# Oracle-development
+SQL ,PL/SQ;
+use case when to do the development
+set serveroutput on 
+declare
+season int:=3;
+aboutinfo varchar2(50);
+begin
+case when season
+  when 1 then
+  aboutinfo := season||'季节包括 1，2，3 月份';
+  when 2 then
+  aboutinfo := season||'季节包括4，5，6 月份';
+  when 3 then
+  aboutinfo := season||'季节包括7，8，9月份';
+  when 4 then
+  aboutinfo := season||'季节包括10，11，12月份';
+  else
+  aboutinfo := season||'季节不合法';
+  end case;
+  dbms_output.put_line(aboutinfo);
+  end;
+  /
