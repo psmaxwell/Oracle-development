@@ -1,0 +1,110 @@
+
+/*(1)使用loop 语句求前100个自然数的和，代码如下：*/
+set serveroutput on 
+
+declare
+  sum_i int := 0;
+  i     int := 0;
+begin
+  loop
+    i     := i + 1;
+    sum_i := sum_i + i;
+  
+    exit when i = 100;
+  
+  end loop;
+  dbms_output.put_line('前100个自然数的和是:' || sum_i);
+end;
+/
+
+/*（2）使用while 语句求前100个自然数的和，代码如下：*/
+
+set serveroutput on
+
+declare
+  sum_i int := 0;
+  i     int := 0;
+begin
+  while i <= 99 loop
+    i     := i + 1;
+    sum_i := sum_i + i;
+  end loop;
+  dbms_output.put_line('前100个自然数的和是：' || sum_i);
+end;
+/
+
+
+declare
+  sum_i int := 0;
+  i     int := 0;
+begin
+  loop
+    i:= i + 2;
+    sum_i:= sum_i + i;
+    exit when i = 200;
+  
+  end loop;
+  dbms_output.put_line('前200个自然数的和是：' || sum_i);
+end;
+/
+
+
+set serveroutput on 
+
+declare
+  sum_i int := 0;
+  i     int := 0;
+begin
+  while i <= 199 loop
+    i     := i + 1;
+    sum_i := sum_i + i;
+  end loop;
+  dbms_output.put_line('前200个自然数的和是：' || sum_i);
+end;
+
+    
+/*实例109 使用for 语句求前100个自然数中偶数之和*/
+
+
+set serveroutput on
+
+declare
+  sum_i int := 0;
+begin
+  for i in reverse 1 .. 100 loop
+    if mod(i, 2) = 0 then
+      sum_i := sum_i + i;
+    end if;
+  end loop;
+  dbms_output.put_line('前100个自然数中偶数之和是：' || sum_i);
+end;
+/
+
+/*实例110 检索scott.emp 表中职位是SALESMAN的记录*/
+
+select empno, ename, job
+  from scott.emp
+ where job = 'SALESMAN'
+ order by empno;
+
+
+技术要点：
+
+SELECT select_list [INTO new_table]
+[FROM table_name] [WHERE search_condition]
+[GROUP BY group_by_expression]
+[Having search_condition]
+[ORDER BY order_expression[ASC][DESC]]
+
+
+/*select_list 指定由查询返回的列。它是一个逗号分隔的表达式列表。每个表达式同时定义格式（数据类型和大小）和结果集列的数据来源。
+每个选择列表表达式通常是对获取数据的表源或视图的列的引用。但也可能是其他表达式，例如常量或transact-SQL函数。在选择列表中使用*
+表达式指定返回源表中的所有列。*/
+
+
+/*INTO new_table 创建新表并将查询行从查询插入到新表中。new_table 指定新表的名称。
+
+FROM table_source 指定从其中检索行的表。这些来源可能包括基表、视图、和链接表。FROM 子句还可包含连接说明，该说明定义了SQL Server
+用来在表之间进行导航的特定路径。FROM 子句还用在DELETE 和UPDATE 语句中以定义要修改的表。
+
+WHERE search_condition : WHERE 子句指定用于限制返回的行的搜索条件。WHERE 子句还用在DELETE */
