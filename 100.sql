@@ -1,5 +1,5 @@
  /*使用loop循环求前100 个自然数 的和*/
-  
+  /
  set serveroutput on
  
  declare
@@ -13,3 +13,9 @@
    end loop;
    dbms_output.put_line('前100个自然数的和是: ' || sum_i);
  end;
+ 
+ 
+ 
+ /*add query sql*/
+
+ select * from emp;
